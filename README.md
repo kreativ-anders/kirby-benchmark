@@ -3,9 +3,6 @@
 * [What do you get?](#what-do-you-get)
 * [Benchmark Overview](#benchmark-overview)
 * [Installation](#installation)
-* [Get Started](#get-started)
-* [Test](#test)
-* [Examples](#examples)
 * [Notes](#notes)
   * [Kirby CMS Licence](#kirby-cms-license)
 * [Support](#support)  
@@ -15,17 +12,13 @@ A very simple benchmarking Plug-in to bring [Kirby CMS](https://getkirby.com) to
 
 ## Benchmark Overview:
 
-All Tests are triggered by a dedicated URL route.
+Just fire some URLs in your browser...
 
 **Test** | **URL** | **Parameter** | **Comment**
 :---- | :---- | :---- | :----
-Create Kirby Users | /benchmark/create/user/? | Number of users to create | Previous generated users will not be deleted!*
-Search Kirby User by Email | /benchmark/search/user/email/? | Email Address | Emails look like "42@domain.tld"
+Create Kirby Users | /benchmark/create/user/? | Number of users to create | Previous generated users will not be deleted![^1]
+Search Kirby User by Email | /benchmark/search/user/email/? | Email Address | Generated emails look like _42(at)domain.tld_
 Search Kirby User by Attribute | /benchmark/search/user/candidate/? | Attribute | Attributes are written in the seperate file `user.txt` 
-
-*Doing so programmatically raises an exception:
-
->logicException: The last user cannot be deleted
 
 ## Installation:
 
@@ -33,7 +26,6 @@ Search Kirby User by Attribute | /benchmark/search/user/candidate/? | Attribute 
 1. Download the source code.
 1. Unzip the files.
 1. Paste inside _../site/plugins/_.
-1. Head over to **[Get Started](#get-started)**.
 
 ### Git Submodule (Recommended)
 You can add the Kirby Benchmark Plug-In as a git submodule as well:
@@ -53,10 +45,6 @@ $ git commit -am "Update submodules"
 $ git submodule update --init --recursive
 ````
 
-## Get Started:
-
-Just fire some URLs (see above) and "wait" for the output.
-
 ### config.php
 
 > No additional configs required!
@@ -71,7 +59,7 @@ This Plug-In is built for Kirby CMS based on **Kirby´s Starterkit v3.5.7.1**.
 *Go to [https://getkirby.com/buy](https://getkirby.com/buy)*
 
 ## Warning:
-Do not underestimate the file writing procedure. Every users leads to 4 items. The folder and 3 files within. Like
+Do not underestimate the file writing overhead. Every user equals four items - the dedicated folder for the user itself and three files within:
 ```
 accounts/
   ...
@@ -79,12 +67,16 @@ accounts/
     .htpasswd
     index.php
     user.txt
+  ...
 ```
+>**Creating 10.000 users writes 40.000 items!**
 
 ## Disclaimer
 
-The source code is provided "as is" with no guarantee. Use it at your own risk and always test it yourself before using it in a production environment. If you find any issues, please create a new issue.
+The source code is provided "as is" with no guarantee. Use it at your own risk and always test it yourself before *NOT* using it in a production environment. If you find any issues, please create a new issue.
 
 ## Support
 
 In case this Plug-In brought you some fun consider supporting kreativ-anders by donating via [PayPal](https://paypal.me/kreativanders), or becoming a **GitHub Sponsor**.
+
+[^1]:Doing so programmatically raises an exception: 'logicException: The last user cannot be deleted'
