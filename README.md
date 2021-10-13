@@ -20,6 +20,25 @@ Create Kirby Users | /benchmark/create/user/? | Number of users to create | Prev
 Search Kirby User by Email | /benchmark/search/user/email/? | Email Address | Generated emails look like _42(at)domain.tld_
 Search Kirby User by Attribute | /benchmark/search/user/candidate/? | Attribute | Attributes are written in the seperate file `user.txt` 
 
+### User Creation
+
+>`$i` will increment automatically, so it is easy to find/test users/logins. Optionally, you can use [userkit Add-On](https://github.com/kreativ-anders/kirby-userkit) for login.
+
+```PHP
+ $user = $kirby->users()->create([
+   'email'     => $i . '@domain.tld',
+   'password'  => '12345678'   
+ ]);
+```
+
+### User Candidate Attribute
+
+```PHP
+ $user->update([
+   'candidate' => $i
+ ]);
+```
+
 ## Installation:
 
 ### Download
