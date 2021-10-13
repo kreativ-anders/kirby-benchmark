@@ -66,7 +66,8 @@ return function ($kirby) {
             'Hours'       => $hours,
             'Minutes'     => $minutes,
             'Seconds'     => $seconds
-          ]
+          ],
+          'Accounts'  => $kirby->users()->count()
         ];
       }
     ],
@@ -96,6 +97,7 @@ return function ($kirby) {
             'Minutes'     => $minutes,
             'Seconds'     => $seconds
           ],
+          'Accounts'  => $kirby->users()->count(),
           'User' => [
             'Email' => $user ? $user->email() : 'NA',
             'Candidate' => $user ? $user->candidate()->toString() : 'NA'
@@ -129,6 +131,7 @@ return function ($kirby) {
             'Minutes'     => $minutes,
             'Seconds'     => $seconds
           ],
+          'Accounts'  => $kirby->users()->count(),
           'User' => [
             'Email' => $user ? $user->email() : 'NA',
             'Candidate' => $user ? $user->candidate()->toString() : 'NA'
