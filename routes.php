@@ -21,12 +21,16 @@ return function ($kirby) {
         // KILL ALL USERS MANUALLY
         /* => logicException: The last user cannot be deleted */
 
+        // START WITH HIGHEST CANDIDATE
+        $count = ($kirby->users()->count()===0) ? 1 : $kirby->users()->count()+1;
+        $loop = $count + $num;
+
         // START TIMER
         $start = microtime(true);
 
         try {
 
-          for ($i = 1; $i<=$num; ++$i) {
+          for ($i = $count; $i<$loop; ++$i) {
 
             // CREATE USER
             $user = $kirby->users()->create([
