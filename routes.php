@@ -71,6 +71,40 @@ return function ($kirby) {
         ];
       }
     ],
+    // SEARCH KIRBY USER BY UUID ---------------------------------------------------------------------------------------
+    [
+      // PATTERN => BENCHMARK / SEARCH / USER / UUID / X
+      'pattern' => 'benchmark/search/user/uuid/(:any)',
+      'action' => function ($uuid) {
+
+        // START TIMER
+        $start = microtime(true);
+
+        $user = kirby()->user($uuid);
+
+        $stop = microtime(true);
+        $tto = $stop - $start;
+
+        // Convert
+        $hours = (int)($tto/60/60);
+        $minutes = (int)($tto/60)-$hours*60;
+        $seconds = (int)$tto-$hours*60*60-$minutes*60;
+
+        return [
+          'TTO' => [
+            'Microtime'   => $tto,
+            'Hours'       => $hours,
+            'Minutes'     => $minutes,
+            'Seconds'     => $seconds
+          ],
+          'Accounts'  => kirby()->users()->count(),
+          'User' => [
+            'Email' => $user ? $user->email() : 'NA',
+            'Candidate' => $user ? $user->candidate()->toString() : 'NA'
+          ]
+        ];
+      }
+    ],
     // SEARCH KIRBY USER BY EMAIL ---------------------------------------------------------------------------------------
     [
       // PATTERN => BENCHMARK / SEARCH / USER / EMAIL / X

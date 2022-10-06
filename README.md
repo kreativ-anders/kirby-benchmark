@@ -17,6 +17,7 @@ Just fire some URLs in your browser...
 **Test** | **URL** | **Parameter** | **Comment**
 :---- | :---- | :---- | :----
 Create Kirby Users | /benchmark/create/user/? | Number of users to create (INT) | Previous generated users will not be deleted![^1]
+Search Kirby User by UUID | /benchmark/search/user/uuid/? | UUID (STRING) | Generated uuids look like _PitCAXVW_
 Search Kirby User by Email | /benchmark/search/user/email/? | Email Address (STRING) | Generated emails look like _42(at)domain.tld_
 Search Kirby User by Attribute | /benchmark/search/user/candidate/? | Attribute (INT) | Attributes are written in the seperate file `user.txt` 
 
@@ -69,7 +70,7 @@ $ git submodule update --init --recursive
 > No additional configs required!
 
 ## Notes:
-This Plug-In is built for Kirby CMS based on **Kirby´s Starterkit v3.5.7.1**.
+This Plug-In is built for Kirby CMS based on **Kirby´s Starterkit v3.8.0**.
 
 ### Kirby CMS license
 
