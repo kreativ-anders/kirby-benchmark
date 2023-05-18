@@ -28,15 +28,10 @@ Search Kirby User by Attribute | /benchmark/search/user/candidate/? | Attribute 
 ```PHP
  $user = $kirby->users()->create([
    'email'     => $i . '@domain.tld',
-   'password'  => '12345678'   
- ]);
-```
-
-### User Candidate Attribute
-
-```PHP
- $user->update([
-   'candidate' => $i
+   'password'  => '12345678',
+   'content'   => [
+      'candidate' => $i
+    ]    
  ]);
 ```
 

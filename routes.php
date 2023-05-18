@@ -35,12 +35,10 @@ return function ($kirby) {
             // CREATE USER
             $user = $kirby->users()->create([
               'email'     => $i . '@domain.tld',
-              'password'  => '12345678'   
-            ]);
-
-            // UPDATE USER
-            $user->update([
-              'candidate' => $i
+              'password'  => '12345678',
+              'content'   => [
+                'candidate' => $i
+              ] 
             ]);
           }
 
